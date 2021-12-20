@@ -61,6 +61,7 @@ jobs:
         git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git openwrt/package/mentohust
         git clone https://github.com/BoringCat/luci-app-mentohust.git openwrt/package/luci-app-mentohust
         git clone https://github.com/kongfl888/luci-app-adguardhome.git openwrt/package/luci-app-adguardhome
+        git clone https://github.com/rufengsuixing/luci-app-zerotier.git openwrt/package/luci-app-zerotier
         # rm -rf openwrt/target/linux/ramips/image/mt7621.mk        
         # rm -rf openwrt/target/linux/ramips/base-files/etc/board.d/02_network
         # rm -rf openwrt/target/linux/ramips/base-files/etc/board.d/01_leds
