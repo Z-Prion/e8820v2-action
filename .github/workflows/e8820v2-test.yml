@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/siwind/openwrt.git
-  REPO_BRANCH: master
+  REPO_BRANCH: openwrt-19.07
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: test.config
   DIY_P1_SH: diy-part1.sh
@@ -58,10 +58,10 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git openwrt/package/mentohust
-        git clone https://github.com/BoringCat/luci-app-mentohust.git openwrt/package/luci-app-mentohust
-        git clone https://github.com/kongfl888/luci-app-adguardhome.git openwrt/package/luci-app-adguardhome
-        git clone https://github.com/rufengsuixing/luci-app-zerotier.git openwrt/package/luci-app-zerotier
+        # git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git openwrt/package/mentohust
+        # git clone https://github.com/BoringCat/luci-app-mentohust.git openwrt/package/luci-app-mentohust
+        # git clone https://github.com/kongfl888/luci-app-adguardhome.git openwrt/package/luci-app-adguardhome
+        # git clone https://github.com/rufengsuixing/luci-app-zerotier.git openwrt/package/luci-app-zerotier
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     - name: Load custom feeds
