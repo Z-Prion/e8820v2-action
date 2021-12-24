@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt wr710n
+name: Build OpenWrt zte8820v2
 
 on:
   repository_dispatch:
@@ -20,12 +20,12 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/openwrt.git
-  REPO_BRANCH: lede-17.01
+  REPO_URL: https://github.com/Z-Prion/e8820v2-lede.git
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 20200415.config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
+  CONFIG_FILE: 8820v2-lede.config
+  # DIY_P1_SH: diy-part1.sh
+  # DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -58,19 +58,9 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git openwrt/package/mentohust
-        git clone https://github.com/BoringCat/luci-app-mentohust.git openwrt/package/luci-app-mentohust
+        # git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git openwrt/package/mentohust
+        # git clone https://github.com/BoringCat/luci-app-mentohust.git openwrt/package/luci-app-mentohust
         git clone https://github.com/kongfl888/luci-app-adguardhome.git openwrt/package/luci-app-adguardhome
-        # rm -rf openwrt/target/linux/ar71xx/base-files/etc/board.d/02_network
-        # rm -rf openwrt/target/linux/ar71xx/files/arch/mips/ath79/mach-tl-wr802n.c
-        rm -rf openwrt/target/linux/ar71xx/image/tiny-tp-link.mk
-        # rm -rf openwrt/target/linux/ar71xx/config-4.14
-        git clone https://github.com/Z-Prion/wr720n-710n-700n-lede-file.git openwrt/test
-        cp openwrt/test/lede-20200915/tiny-tp-link.mk openwrt/target/linux/ar71xx/image
-        # cp -r openwrt/test/libcap openwrt/package/libs
-        # cp openwrt/test/02_network openwrt/target/linux/ar71xx/base-files/etc/board.d
-        # cp openwrt/test/mach-tl-wr802n.c openwrt/target/linux/ar71xx/files/arch/mips/ath79
-        # cp openwrt/test/config-4.14 openwrt/target/linux/ar71xx
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     - name: Load custom feeds
